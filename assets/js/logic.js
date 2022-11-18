@@ -15,8 +15,8 @@ let currentQuestion;
 let timeLeft = 75;
 
 
-let soundRight = new Audio('./sfx/correct.wav');
-let soundWrong = new Audio('/sfx/incorrect.wav');
+let soundRight = new Audio('./assets/sfx/correct.wav');
+let soundWrong = new Audio('./assets/sfx/incorrect.wav');
 
 
 
