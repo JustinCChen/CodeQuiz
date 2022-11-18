@@ -7,15 +7,16 @@ let questionStart = document.getElementById("questions")
 let endScreen = document.getElementById("end-screen");
 let feedbackEl = document.getElementById("feedback")
 let submitBtn = document.getElementById("submit")
-var finalScore = document.getElementById('final-score');
+let finalScore = document.getElementById('final-score');
+
 
 let index = 0;
 let currentQuestion;
 let timeLeft = 75;
 
 
-let soundRight = new Audio('assets/sfx/correct.wav');
-let soundWrong = new Audio('assets/sfx/incorrect.wav');
+let soundRight = new Audio('./sfx/correct.wav');
+let soundWrong = new Audio('/sfx/incorrect.wav');
 
 
 
@@ -124,8 +125,15 @@ function chooseAnwser(event) {
     return;
   }
   console.log(questions)
+
+  feedbackEl.setAttribute('class', 'feedback');
+      setTimeout(function () {
+      feedbackEl.setAttribute('class', 'feedback hide');
+    }, 1000);
+
   if (clicked.value === currentQuestion.answer){
-    index++;
+      index++;
+      feedbackEl.textContent = 'Correct!';
     if (index > questions.length -1){
       choices.textContent = "";
       clearInterval(timeCount);
@@ -137,6 +145,7 @@ function chooseAnwser(event) {
     soundRight.play();
   }else{
     timeLeft -= 15;
+    feedbackEl.textContent = 'Wrong!';
     soundWrong.play();
   }
   
